@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Estacion
+    uniqueID: 3907561567
+    locked: 0
+  - name: Objeto
+    uniqueID: 4133459459
+    locked: 0
