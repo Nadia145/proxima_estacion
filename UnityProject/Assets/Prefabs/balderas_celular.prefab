@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2505291049374945445}
   m_Layer: 5
-  m_Name: Pantalla telefono
+  m_Name: balderas_celular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
