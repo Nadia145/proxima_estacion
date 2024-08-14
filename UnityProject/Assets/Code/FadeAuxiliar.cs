@@ -2,13 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class FadeEffect : MonoBehaviour
+public class FadeAuxiliar : MonoBehaviour
 {
-    // Variables para el cambio de estacion
-    public Vector3 newCameraPosition;
-    public GameObject objetsToActivate;
-    private Camera mainCamera;
-
     // Variables para el efecto de parpadeo
     public Image fadePanel;
     public float fadeDuration = 1f;
@@ -16,26 +11,24 @@ public class FadeEffect : MonoBehaviour
 
     void Start()
     {
-        mainCamera = Camera.main;
         fadePanel.color = new Color(0, 0, 0, 0);
     }
 
-    public void OnMouseDown()
+    public void OnMouseDown(bool fadeOut)
     {
-        StartCoroutine(FadeOutIn());
+        StartCoroutine(FadeOutIn(fadeOut));
     }
 
-    private IEnumerator FadeOutIn()
+    private IEnumerator FadeOutIn(bool fadeOut)
     {
-        // Fade out (panel negro)
-        yield return StartCoroutine(FadeTo(1, fadeDuration));
+        if (fadeOut) {
+            yield return StartCoroutine(FadeTo(1, fadeDuration));
+        } else {
+            yield return fadePanel.color = new Color(0, 0, 0, 1);
+        }
 
         // Mantener el panel completamente negro durante un tiempo
         yield return new WaitForSeconds(blackPanelDuration);
-
-        // ACodigo a ejecutar mientras el panel es negro
-        objetsToActivate.SetActive(true);
-        mainCamera.transform.position = newCameraPosition;
 
         // Fade in (panel negro)
         yield return StartCoroutine(FadeTo(0, fadeDuration));

@@ -1,59 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System.Collections;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public static SceneTransitionManager Instance;
+    public Animator transition;
 
-    public Image fadePanel;
-    public float fadeDuration = 1f;
+    public float transitionTime = 1f;
 
-    void Awake()
+    public void OnMouseDown(int sceneIndex)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        LoadNextLevel(sceneIndex);
     }
 
-    void Start()
+    public void LoadNextLevel(int sceneIndex)
     {
-        fadePanel.color = new Color(0, 0, 0, 1); // Iniciar en negro
-        StartCoroutine(FadeTo(0, fadeDuration)); // Fade in al inicio
+        StartCoroutine(LoadLevel(sceneIndex));
     }
 
-    public void ChangeScene(int sceneIndex)
+    IEnumerator LoadLevel(int levelIndex)
     {
-        StartCoroutine(TransitionToScene(sceneIndex));
-    }
+        transition.SetTrigger("start");
 
-    private IEnumerator TransitionToScene(int sceneIndex)
-    {
-        yield return StartCoroutine(FadeTo(1, fadeDuration)); // Fade out
-        SceneManager.LoadScene(sceneIndex);
-        yield return StartCoroutine(FadeTo(0, fadeDuration)); // Fade in
-    }
+        yield return new WaitForSeconds(transitionTime);
 
-    private IEnumerator FadeTo(float targetAlpha, float duration)
-    {
-        float startAlpha = fadePanel.color.a;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
-            fadePanel.color = new Color(0, 0, 0, alpha);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        fadePanel.color = new Color(0, 0, 0, targetAlpha);
+        SceneManager.LoadScene(levelIndex);
     }
 }
