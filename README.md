@@ -10,4 +10,4 @@ Repositorio para el videojuego "Proxima Estación" creado para la la Women Game 
 - Para jugar: Descargar todo el contenido de la carpeta juego y ejecutar "UnityProject.exe".
 - Para modificar: Clonar el respositorio y abrir en Unity Hub la carpeta UnityProject.
 
-Para mas informaciín visitar la pagina del videojuego: https://gamersnake145.itch.io/proxima-estacion-wgj24 
+Para mas información visitar la pagina del videojuego: https://gamersnake145.itch.io/proxima-estacion-wgj24 
