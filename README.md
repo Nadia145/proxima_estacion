@@ -5,7 +5,8 @@ Repositorio para el videojuego "Proxima Estación" creado para la la Women Game 
 - Juego: Carpeta con el juego listo ejecutarse en la plataforma Windows.
 - Proceso: Imagenes y Videos con el proceso del videojuego en Arte, Programación, UI.
 - UnityProject: Proyecto en Unity del videojuego.
-Forma de uso:
+
+# Forma de uso:
 - Para jugar: Descargar todo el contenido de la carpeta juego y ejecutar "UnityProject.exe".
 - Para modificar: Clonar el respositorio y abrir en Unity Hub la carpeta UnityProject.
 
