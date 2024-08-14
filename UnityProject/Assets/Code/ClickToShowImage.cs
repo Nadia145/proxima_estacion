@@ -15,7 +15,7 @@ public class ClickToShowImage : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         if (imageToShow != null)
         {
